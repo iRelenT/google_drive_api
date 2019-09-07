@@ -21,17 +21,20 @@ def prepareFiles():
         EXCLUDEDFILES = [file for file in str(synch_folders['excludeFile']).split(",")]
         content = [content for content in str(synch_folders['content']).split(",")]
 
-        #false rootPath for the firstFolder
+
         metadata = createMetadata(rootPath,type="folder")
         id  = uploadFile(metadata,type="folder")
+        finishedMetadataFolder.append(metadata)
+
         walkThree(rootPath,id)
 
 
 
 
-def walkThree(path,id):
-    rootPath = path
+def walkThree(source ,id):
+    rootPath = source
     wholeDir = os.listdir(rootPath)
+
 
     # split the directory in files/folders
 
@@ -41,33 +44,37 @@ def walkThree(path,id):
     files = []
     path = ""
     for x in wholeDir:
-        path = path + "/" + x
+        path = rootPath + "/" + x
         if os.path.isfile(path) == True:
             files.append(x)
         else:
             folders.append(x)
         path = rootPath
 
+
     for file in files:
         #if FIRSTRUNFILE:
         #    if file in EXCLUDEDFILES:
         #        FIRSTRUNFILE = False
         #        continue
-        metadata = createMetadata(rootPath,type="file",id=id)
+
+
+        metadata = createMetadata(rootPath + "/" + file,type="file",id=id)
         uploadFile(metadata,type="file")
         finishedMetadataFile.append(metadata)
+
     for folder in folders:
         #if FIRSTRUNFOLDER:
         #    if file in EXCLUDEDFOLDERS:
         #        FIRSTRUNFOLDER = False
-         #       continue
-        metadata = createMetadata(rootPath,type="folder",id=id)
+        #       continue
+
+        # might solve the issue with double test folders! +1
+        metadata = createMetadata(rootPath + "/" + folder,type="folder",id=id)
         finishedMetadataFolder.append(metadata)
         id = uploadFile(metadata,type="folder")
-        try:
-            walkThree(rootPath + "/" + folder,id)
-        except NotADirectoryError:
-            print("what happened " + folder)
+        walkThree(rootPath + "/" + folder,id)
+
 
 def createMetadata(path,type,id = ""):
     metadata = {}
@@ -84,13 +91,13 @@ def createMetadata(path,type,id = ""):
         metadata['name'] = fileName
         metadata['mimeType'] = getSpecificMime(type="file",extension=fileName.rsplit(".")[-1])
         metadata['parents'] = [id]
+        return metadata
 
 
 def getSpecificMime(type,extension=""):
     if type == "folder":
         return "application/vnd.google-apps.folder"
     else:
-        # use list above
         mimeTypes = {
             "xls" : 'application/vnd.ms-excel',
             "xlsx" : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -124,6 +131,8 @@ def getSpecificMime(type,extension=""):
 
 def uploadFile(metadata,type):
     if type == "folder":
+
+        # hard coded ID just for testing!
         return "1AHGJSKDJASHFCACMCWUIIFPASKÖSJ"
     elif type == "file":
         print("upload!")
@@ -133,15 +142,3 @@ def uploadFile(metadata,type):
 
 
 prepareFiles()
-print(finishedMetadataFile)
-print("\n\n\n")
-for x in finishedMetadataFolder:
-    for k,v in dict(x).items():
-        print(str(k) + "---->" + str(v))
-
-
-
-
-
-
-
