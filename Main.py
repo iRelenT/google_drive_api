@@ -1,7 +1,7 @@
 from __future__ import print_function
 import Auth as auth
-from ApiInterface import *
 from PathStorage import *
+from FileMetadata import *
 
 class Main():
     def __init__(self):
@@ -12,7 +12,6 @@ class Main():
         # objects
         authentication = auth.Auth(self.SCOPES)
         creds = authentication.checkCredentials()
-        interface = ApiInterface(creds)
         pathStorage = PathStorage()
         # ---------------------------------------
 
@@ -25,9 +24,8 @@ class Main():
             elif choice == "-del":
                 pathStorage.deleteConfFile()
             elif choice == "-up":
-                # not supported yet
-                # interface.uploadFile()
-                pass
+                fileMetadata = FileMetadata(creds)
+                fileMetadata.prepareFiles(pathStorage.getFoldersList())
             choice = input(message)
 if __name__ == '__main__':
     Main()
