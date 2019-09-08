@@ -57,8 +57,7 @@ class PathStorage:
             json.dump(currDicts,file)
 
 
-    # gets the path(s) from the folders.txt, converts them to dict and adds path(s) to the foldersList list
-    # returns the list
+    # gets the path(s) from the path_conf.txt, json reads the file
     def createListFromfile(self):
         if os.path.getsize(self.getConfFile()) > 0:
             with open(self.getConfFile(),"r") as file:
