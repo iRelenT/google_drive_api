@@ -1,6 +1,5 @@
 import os
 from PathStorage import *
-
 #FIRSTRUNFILE = True
 #FIRSTRUNFOLDER = True
 EXCLUDEDFILES = []
@@ -10,7 +9,8 @@ finishedMetadataFile = []
 finishedMetadataFolder = []
 
 def prepareFiles():
-    list = getFoldersList()
+    pathStorage = PathStorage()
+    list = pathStorage.getFoldersList()
 
     # whole folders one by one
     for synch_folders in list:
