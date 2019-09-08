@@ -11,7 +11,7 @@ class FileMetadata():
     finishedMetadataFile = []
     finishedMetadataFolder = []
     def __init__(self,creds):
-        interface = ApiInterface(creds)
+        self.interface = ApiInterface(creds)
 
     def prepareFiles(self,pathFile):
 
@@ -28,15 +28,11 @@ class FileMetadata():
 
 
             metadata = self.createMetadata(rootPath,type="folder")
-            id  = self.uploadFile(metadata,type="folder")
+            newId  = self.interface.uploadToDrive(metadata,type="folder")
             self.finishedMetadataFolder.append(metadata)
+            self.walkThree(rootPath,newId)
 
-            self.walkThree(rootPath,id)
-            print(self.finishedMetadataFile)
-            print(self.finishedMetadataFolder)
-
-
-    def walkThree(self,source ,id):
+    def walkThree(self,source ,rootId):
         rootPath = source
         wholeDir = os.listdir(rootPath)
 
@@ -64,9 +60,10 @@ class FileMetadata():
             #        continue
 
 
-            metadata = self.createMetadata(rootPath + "/" + file,type="file",id=id)
-            self.uploadFile(metadata,type="file")
-            self.finishedMetadataFile.append(metadata)
+            #metadata = self.createMetadata(rootPath + "/" + file,type="file",id=id)
+            #self.interface.uploadToDrive(metadata,type="file")
+            #self.finishedMetadataFile.append(metadata)
+            pass
 
         for folder in folders:
             #if FIRSTRUNFOLDER:
@@ -74,11 +71,10 @@ class FileMetadata():
             #        FIRSTRUNFOLDER = False
             #       continue
 
-            # might solve the issue with double test folders! +1
-            metadata = self.createMetadata(rootPath + "/" + folder,type="folder",id=id)
+            metadata = self.createMetadata(rootPath + "/" + folder,type="folder",id=rootId)
             self.finishedMetadataFolder.append(metadata)
-            id = self.uploadFile(metadata,type="folder")
-            self.walkThree(rootPath + "/" + folder,id)
+            newId = self.interface.uploadToDrive(metadata,type="folder")
+            self.walkThree(rootPath + "/" + folder,newId)
 
 
     def createMetadata(self,path,type,id = ""):
@@ -132,12 +128,3 @@ class FileMetadata():
             }
 
             return mimeTypes[extension] if extension in mimeTypes.keys() else ""
-
-
-    def uploadFile(self,metadata,type):
-        if type == "folder":
-
-            # hard coded ID just for testing!
-            return "1AHGJSKDJASHFCACMCWUIIFPASKÖSJ"
-        elif type == "file":
-            print("upload!")
