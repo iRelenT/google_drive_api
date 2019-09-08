@@ -2,10 +2,7 @@ import os
 import json
 
 class PathStorage:
-    def init(self):
-        # contains dictionary with path and infos
-        self.FOLDERSLIST = []
-
+    FOLDERSLIST = []
 
     # add new path(s) to the list
     # add aditional infos for each path!
@@ -71,7 +68,8 @@ class PathStorage:
                 print("No paths added!")
     # delete path_conf.txt to turn off synchronization of the folders
     def deleteConfFile(self):
-        pass
+        os.remove(self.getConfFile())
+        open(os.getcwd() + '/path_conf.txt',"a").close()
 
     # searches for the path_conf.txt file
     def getConfFile(self):
