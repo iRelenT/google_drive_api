@@ -79,4 +79,5 @@ class PathStorage:
                 if file == "path_conf.txt":
                     path = os.path.join(root,file)
                     return path
-
+        open("path_conf.txt","w+").close()
+        return os.path.join(os.getcwd(),"path_conf.txt")
