@@ -60,10 +60,9 @@ class FileMetadata():
             #        continue
 
 
-            #metadata = self.createMetadata(rootPath + "/" + file,type="file",id=id)
-            #self.interface.uploadToDrive(metadata,type="file")
-            #self.finishedMetadataFile.append(metadata)
-            pass
+            metadata = self.createMetadata(rootPath + "/" + file,type="file",id=rootId)
+            self.interface.uploadToDrive(metadata,type="file",path=rootPath)
+            self.finishedMetadataFile.append(metadata)
 
         for folder in folders:
             #if FIRSTRUNFOLDER:
@@ -94,7 +93,8 @@ class FileMetadata():
             metadata['parents'] = [id]
             return metadata
 
-
+    # doesnt work for files with no extension!
+    # improvement
     def getSpecificMime(self,type,extension=""):
         if type == "folder":
             return "application/vnd.google-apps.folder"
