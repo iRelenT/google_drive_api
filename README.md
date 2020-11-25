@@ -1,4 +1,4 @@
-Script's Erklärung (work in progress aber automatischer Download hat geklappt)
+Script's Erklärung (work in progress aber automatischer Upload hat geklappt)
 ======================
 _____________________________________________________________________________________________________________________________
 
