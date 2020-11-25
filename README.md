@@ -1,4 +1,4 @@
-Script's Erklärung (Das Projekt bis zu diesem Zeitpunkt ist innerhalb einer Woche entstanden, also waren meine Python Kenntnisse auch nicht die besten.)
+Script's Erklärung
 ======================
 _____________________________________________________________________________________________________________________________
 
@@ -13,7 +13,7 @@ Ein relativ anspruchsvollerer Teil des Skripts war den kompletten Inhalt eines z
 
 Auth.py: Von Google mitgeliefert
 
-
+##### info:(Das Projekt bis zu diesem Zeitpunkt ist innerhalb einer Woche entstanden, also waren meine Python Kenntnisse auch nicht die besten.)
 
 Google-drive-api (work in progress)
 ================
