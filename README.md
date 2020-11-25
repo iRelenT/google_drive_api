@@ -1,4 +1,4 @@
-Script's Erklärung (noch nicht vollendet aber automatischer Upload funktioniert)
+Script's Erklärung (noch nicht fertig aber automatischer Upload funktioniert)
 ======================
 _____________________________________________________________________________________________________________________________
 
