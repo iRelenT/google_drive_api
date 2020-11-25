@@ -1,4 +1,4 @@
-Script's Erklärung
+Script's Erklärung (work in progress aber automatischer Download hat geklappt)
 ======================
 _____________________________________________________________________________________________________________________________
 
@@ -15,7 +15,7 @@ Auth.py: Von Google mitgeliefert
 
 ##### info:(Das Projekt bis zu diesem Zeitpunkt ist innerhalb einer Woche entstanden, also waren meine Python Kenntnisse auch nicht die besten.)
 
-Google-drive-api (work in progress)
+Google-drive-api
 ================
 _____________________________________________________________________________________________________________________________
 
