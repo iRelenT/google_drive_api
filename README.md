@@ -1,6 +1,7 @@
 Script's Erklärung (noch nicht fertig aber Upload funktioniert)
 ======================
 _____________________________________________________________________________________________________________________________
+Automatisierung über cronjobs folgt (automatischer upload der Daten beim herunterfahren, automatischer download neuer Daten beim hochfahren)
 
 Main.py: Main ist der Einstieg des Skripts. Hier kann man über das Terminal entscheiden, ob ein neuer Pfad für das Hochladen hinzugefügt werden soll, oder ob die angegebenen Ordner hochgeladen werden sollen. [Das Downloaden wurde noch nicht fertiggestellt]
 
@@ -13,7 +14,7 @@ Ein relativ anspruchsvollerer Teil des Skripts war den kompletten Inhalt eines z
 
 Auth.py: Von Google mitgeliefert
 
-##### info:(Das Projekt bis zu diesem Zeitpunkt ist innerhalb einer Woche entstanden, also waren meine Python Kenntnisse auch nicht die besten.)
+##### info: i) Das Projekt bis zu diesem Zeitpunkt ist innerhalb einer Woche entstanden. Parallel dazu habe ich Python gelernt.
 
 Google-drive-api
 ================
