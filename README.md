@@ -1,20 +1,3 @@
-Script's Erklärung (noch nicht fertig aber Upload funktioniert)
-======================
-_____________________________________________________________________________________________________________________________
-Automatisierung über cronjobs folgt (automatischer upload der Daten beim herunterfahren, automatischer download neuer Daten beim hochfahren)
-
-Main.py: Main ist der Einstieg des Skripts. Hier kann man über das Terminal entscheiden, ob ein neuer Pfad für das Hochladen hinzugefügt werden soll, oder ob die angegebenen Ordner hochgeladen werden sollen. [Das Downloaden wurde noch nicht fertiggestellt]
-
-PathStorage.py: Ist dafür zuständig, dass Pfade in die path_conf.txt im JSON Format abgespeichert werden oder die Pfade aus der Konfig. Datei in FOLDERSLIST für weitere Verwendung im Upload/Download verwendet werden.
-
-ApiInterface.py: Kümmert sich momentan nur um den Upload.
-
-FileMetaData.py: Hier kümmert sich das Skript um die Metadaten der Dateien die man hochladen will. Ganz wichtig war hier, dass ein Order oder eine Datei in einem „Parent-Ordner“ dann in den Metadaten die ID des „Parent-Ordners“ angeben muss, sodass der Baum der Verzeichnisse auf Google Drive richtig dargestellt wird.
-Ein relativ anspruchsvollerer Teil des Skripts war den kompletten Inhalt eines zum hochladen erwünschten Ordners „durchzulaufen“ (theoretisch hat jeder weitere Ordner noch n weitere), und jeder einzelnen Datei die entsprechenden Metadaten mitzugeben (also ID des Parent-Ordner usw.). Da musste für die Implementierung schonmal das Whiteboard für Skizzen herhalten.
-
-Auth.py: Von Google mitgeliefert
-
-##### info: i) Das Projekt bis zu diesem Zeitpunkt ist innerhalb einer Woche entstanden. Parallel dazu habe ich Python gelernt.
 
 Google-drive-api
 ================
